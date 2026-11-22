@@ -43,6 +43,6 @@ https://quickframe.geo.hashmeta.tech
 
 ## Demo
 
-A real campaign for **Ya Kun Kaya Toast** (Singapore, since 1944) — the signature Kaya Toast Set: kaya toast with kaya and butter, soft-boiled eggs, and a cup of kopi. Watch the demo video to see a campaign go from form submission to finished reel and kit.
+A real campaign for **CHAGEE** — refreshing drinks: ice-cold fresh-brewed tea over real milk and chewy pearls. Watch the demo video to see a campaign go from form submission to finished reel and kit.
 
-Demo video: https://youtu.be/8NNYIeSn_rE
+Demo video: https://youtu.be/XKNc9fG_4jQ
