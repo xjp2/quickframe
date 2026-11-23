@@ -1,0 +1,247 @@
+{
+  "boards": {
+    "scenes": [
+      {
+        "i": 0,
+        "beat": "hook",
+        "art": "clock",
+        "whyArt": "keyword match in vo -> clock",
+        "accent": [
+          79,
+          70,
+          229
+        ],
+        "file": "scene00_clock.png"
+      },
+      {
+        "i": 1,
+        "beat": "question",
+        "art": "gear",
+        "whyArt": "keyword match in vo -> gear",
+        "accent": [
+          37,
+          99,
+          235
+        ],
+        "file": "scene01_gear.png"
+      },
+      {
+        "i": 2,
+        "beat": "build",
+        "art": "bulb",
+        "whyArt": "motion 'draw' -> bulb",
+        "accent": [
+          2,
+          132,
+          199
+        ],
+        "file": "scene02_bulb.png"
+      },
+      {
+        "i": 3,
+        "beat": "turn",
+        "art": "bars",
+        "whyArt": "keyword match in vo -> bars",
+        "accent": [
+          8,
+          145,
+          178
+        ],
+        "file": "scene03_bars.png"
+      },
+      {
+        "i": 4,
+        "beat": "land",
+        "art": "arrow",
+        "whyArt": "keyword match in vo -> arrow",
+        "accent": [
+          15,
+          118,
+          110
+        ],
+        "file": "scene04_arrow.png"
+      }
+    ],
+    "glyph_unique_no_replays": true,
+    "boards_pairwise_mean_diff": 3.306,
+    "boards_all_distinct": true,
+    "background_identical_across_cuts": true,
+    "accents_in_cool_palette": true,
+    "accents_cool": true,
+    "accents_vivid_at_phone_size": true,
+    "min_accent_chroma": 103,
+    "accents_used": [
+      [
+        79,
+        70,
+        229
+      ],
+      [
+        37,
+        99,
+        235
+      ],
+      [
+        2,
+        132,
+        199
+      ],
+      [
+        8,
+        145,
+        178
+      ],
+      [
+        15,
+        118,
+        110
+      ]
+    ],
+    "pass": true,
+    "topic": "how contactless payment works",
+    "template": "why",
+    "aspect": "16:9",
+    "title": "Contactless payment works \u2014 explained in 40 seconds",
+    "out_dir": "D:\\opc\\t3-images\\samples\\how-contactless-payment-works",
+    "contact_sheet": "D:\\opc\\t3-images\\samples\\how-contactless-payment-works\\contact-sheet.png"
+  },
+  "reroll": {
+    "topic": "how contactless payment works",
+    "glyphs_faithful_to_script": true,
+    "illustration_changed": true,
+    "stage_region_mean_diff": 1.414,
+    "stage_diff_per_scene": [
+      1.849,
+      1.277,
+      1.413,
+      1.052,
+      1.481
+    ],
+    "pass": true
+  },
+  "series": {
+    "topics": 3,
+    "each_topic_boards_pass": true,
+    "character_background_identical": true,
+    "boards_differ_across_topics": true,
+    "titles_differ": true,
+    "ink_paper_rule_locked_to_T1": true,
+    "per_topic": [
+      {
+        "topic": "how contactless payment works",
+        "pass": true,
+        "arts": [
+          "clock",
+          "gear",
+          "bulb",
+          "bars",
+          "arrow"
+        ],
+        "accents": [
+          [
+            79,
+            70,
+            229
+          ],
+          [
+            37,
+            99,
+            235
+          ],
+          [
+            2,
+            132,
+            199
+          ],
+          [
+            8,
+            145,
+            178
+          ],
+          [
+            15,
+            118,
+            110
+          ]
+        ]
+      },
+      {
+        "topic": "why do bonds lose value when rates rise",
+        "pass": true,
+        "arts": [
+          "target",
+          "coins",
+          "clock",
+          "cross",
+          "path"
+        ],
+        "accents": [
+          [
+            6,
+            124,
+            96
+          ],
+          [
+            79,
+            70,
+            229
+          ],
+          [
+            37,
+            99,
+            235
+          ],
+          [
+            2,
+            132,
+            199
+          ],
+          [
+            8,
+            145,
+            178
+          ]
+        ]
+      },
+      {
+        "topic": "the story of the transatlantic cable",
+        "pass": true,
+        "arts": [
+          "cross",
+          "clock",
+          "bulb",
+          "people",
+          "check"
+        ],
+        "accents": [
+          [
+            6,
+            124,
+            96
+          ],
+          [
+            79,
+            70,
+            229
+          ],
+          [
+            37,
+            99,
+            235
+          ],
+          [
+            2,
+            132,
+            199
+          ],
+          [
+            8,
+            145,
+            178
+          ]
+        ]
+      }
+    ],
+    "pass": true
+  }
+}

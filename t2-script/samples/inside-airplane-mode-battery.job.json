@@ -1,0 +1,167 @@
+{
+  "id": "qf-inside-why-airplane-mode-still-drains-your",
+  "topic": "why airplane mode still drains your battery overnight",
+  "subject": "explainer",
+  "template": "inside",
+  "templateName": "Inside the system",
+  "audience": "curious general viewers",
+  "tone": "clear, friendly, confident",
+  "voice": {
+    "name": "neutral",
+    "rate": 1,
+    "pitch": 0
+  },
+  "aspect": "16:9",
+  "music": "chalk",
+  "captions": "blocks",
+  "title": "Why Airplane Mode Still Drains Your Battery Overnight",
+  "hook": "You switch on airplane mode and the battery still drops by morning. The radio was never the whole story.",
+  "totalSec": 29.61,
+  "words": 77,
+  "description": "An inside-the-system explainer of why a phone on airplane mode still loses charge overnight.",
+  "tags": [
+    "airplane-mode",
+    "battery",
+    "smartphone",
+    "operating-system",
+    "inside"
+  ],
+  "thumbnail": {
+    "text": "Airplane Mode Isn't Off",
+    "art": "hero"
+  },
+  "credits": 3,
+  "warnings": [],
+  "scenes": [
+    {
+      "i": 1,
+      "beat": "The surface",
+      "vo": "On the surface, airplane mode looks like the phone sleeps. Dark screen, no signal bars, done.",
+      "caption": "On the surface, airplane mode looks like the phone finally sleeps.",
+      "onText": "Airplane Mode Sleeps?",
+      "motion": "pan",
+      "art": "hero",
+      "whyArt": "clean exterior view of a dark phone in airplane mode",
+      "clip": null,
+      "sec": 6.15,
+      "words": 16,
+      "chars": 93,
+      "start": 0,
+      "end": 6.15,
+      "cues": [
+        {
+          "text": "On the surface, airplane mode looks",
+          "at": 0
+        },
+        {
+          "text": "like the phone finally sleeps.",
+          "at": 3.35
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "beat": "Under the hood",
+      "vo": "Lift the lid and the phone is still awake, indexing files and checking for updates.",
+      "caption": "Lift the lid and the phone is still awake inside.",
+      "onText": "Still Awake Inside",
+      "motion": "zoom",
+      "art": "f2",
+      "whyArt": "exploded cutaway showing background tasks running",
+      "clip": null,
+      "sec": 5.77,
+      "words": 15,
+      "chars": 83,
+      "start": 6.15,
+      "end": 11.92,
+      "cues": [
+        {
+          "text": "Lift the lid and the phone",
+          "at": 6.15
+        },
+        {
+          "text": "is still awake inside.",
+          "at": 9.61
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "beat": "The hidden step",
+      "vo": "The quiet drain is the operating system, not the radio. Apps scheduled to refresh wake the chip.",
+      "caption": "The drain is the operating system, not the radio.",
+      "onText": "The OS, Not Signal",
+      "motion": "build",
+      "art": "s5",
+      "whyArt": "one highlighted component: the scheduler waking the chip",
+      "clip": null,
+      "sec": 6.54,
+      "words": 17,
+      "chars": 96,
+      "start": 11.92,
+      "end": 18.46,
+      "cues": [
+        {
+          "text": "The drain is the operating system,",
+          "at": 11.92
+        },
+        {
+          "text": "not the radio.",
+          "at": 16.28
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "beat": "The tradeoff",
+      "vo": "Every wake costs battery, but it buys a phone that feels instant. That is the price.",
+      "caption": "Every wake costs battery, but buys a phone that feels instant.",
+      "onText": "Ready Costs Battery",
+      "motion": "draw-on",
+      "art": "s6",
+      "whyArt": "two-sided balance: readiness against battery life",
+      "clip": null,
+      "sec": 6.15,
+      "words": 16,
+      "chars": 84,
+      "start": 18.46,
+      "end": 24.61,
+      "cues": [
+        {
+          "text": "Every wake costs battery, but buys",
+          "at": 18.46
+        },
+        {
+          "text": "a phone that feels instant.",
+          "at": 21.81
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "beat": "The big picture",
+      "vo": "Airplane mode silences the radios, not the whole machine built to stay ready.",
+      "caption": "It silences the radios, not the whole machine.",
+      "onText": "Radios Off, Machine On",
+      "motion": "reveal",
+      "art": "f1",
+      "whyArt": "system-wide view of what airplane mode does and does not touch",
+      "clip": null,
+      "sec": 5,
+      "words": 13,
+      "chars": 77,
+      "start": 24.61,
+      "end": 29.61,
+      "cues": [
+        {
+          "text": "It silences the radios, not the",
+          "at": 24.61
+        },
+        {
+          "text": "whole machine.",
+          "at": 28.36
+        }
+      ]
+    }
+  ]
+}

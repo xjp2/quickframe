@@ -1,0 +1,46 @@
+{
+  "models_list": {
+    "ok": true,
+    "status": 200,
+    "ctype": "application/json",
+    "bytes": 8,
+    "sec": 0.1
+  },
+  "model_flux": {
+    "ok": true,
+    "status": 200,
+    "ctype": "image/jpeg",
+    "bytes": 46748,
+    "sec": 5.6
+  },
+  "model_turbo": {
+    "ok": false,
+    "error": "HTTP Error 402: Payment Required",
+    "sec": 0.3
+  },
+  "model_flux-realism": {
+    "ok": false,
+    "error": "HTTP Error 402: Payment Required",
+    "sec": 0.3
+  },
+  "model_flux-anime": {
+    "ok": false,
+    "error": "HTTP Error 402: Payment Required",
+    "sec": 0.3
+  },
+  "model_flux-3d": {
+    "ok": false,
+    "error": "HTTP Error 402: Payment Required",
+    "sec": 0.3
+  },
+  "model_default": {
+    "ok": false,
+    "error": "HTTP Error 402: Payment Required",
+    "sec": 0.3
+  },
+  "no_model_param": {
+    "ok": false,
+    "error": "HTTP Error 402: Payment Required",
+    "sec": 0.5
+  }
+}

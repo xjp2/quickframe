@@ -1,0 +1,202 @@
+{
+  "id": "20261119-133535-0dcd82",
+  "state": "done",
+  "stages": [
+    "script",
+    "boards",
+    "art",
+    "voice",
+    "captions",
+    "encode",
+    "publish"
+  ],
+  "stageState": {
+    "script": "done",
+    "boards": "done",
+    "art": "done",
+    "voice": "done",
+    "captions": "done",
+    "encode": "done",
+    "publish": "done"
+  },
+  "log": [
+    {
+      "ts": 1795066535.039,
+      "stage": "script",
+      "line": "building beat sheet: engine=T2 LLM template=why topic='why do we get goosebumps when we are cold or scared'"
+    },
+    {
+      "ts": 1795066535.191,
+      "stage": "script",
+      "line": "done 0.152s · engine=T2 LLM · 2 scenes · 12.0s · 2.0 credits"
+    },
+    {
+      "ts": 1795066535.272,
+      "stage": "boards",
+      "line": "done 0.08s · 2 stills -> boards-20261119-133535-0dcd82"
+    },
+    {
+      "ts": 1795066535.272,
+      "stage": "art",
+      "line": "done · s0:check(keyword) · s1:people(motion)"
+    },
+    {
+      "ts": 1795066537.732,
+      "stage": "voice",
+      "line": "edge-tts render 11.2s · 2 scenes · cues + scene times rebuilt from real word timings"
+    },
+    {
+      "ts": 1795066537.994,
+      "stage": "voice",
+      "line": "bed=drive mixed 0.88 · 11.21s audio"
+    },
+    {
+      "ts": 1795066537.994,
+      "stage": "captions",
+      "line": "done · style=blocks · cues=10"
+    },
+    {
+      "ts": 1795066538.04,
+      "stage": "encode",
+      "line": "audit 0 violations at 1920x1080 · rendering"
+    },
+    {
+      "ts": 1795066547.377,
+      "stage": "encode",
+      "line": "done 9.383s · 11.20s mp4 · 0.37 MB"
+    },
+    {
+      "ts": 1795066547.396,
+      "stage": "publish",
+      "line": "done · stored edcbd7d86c369aec11ef706c93de6a13-qf-20261119-133535-0dcd82.mp4 · signed URL ttl=86400s · uploaders: none wired"
+    }
+  ],
+  "result": {
+    "id": "20261119-133535-0dcd82",
+    "topic": "why do we get goosebumps when we are cold or scared",
+    "subject": "do we get goosebumps when we",
+    "template": "why",
+    "templateName": "Why it works",
+    "audience": "curious general audience",
+    "tone": "plain, spoken, confident",
+    "voice": {
+      "name": "calm-01",
+      "rate": 1.181,
+      "tts": "edge-tts"
+    },
+    "aspect": "16:9",
+    "music": "drive",
+    "captions": "blocks",
+    "duck": 0.0,
+    "title": "Why You Get Goosebumps",
+    "hook": "Cold air, or a song that hits just right, and your skin bristles for a reason older than language.",
+    "totalSec": 11.21,
+    "words": 34,
+    "description": "A 11s why it works explainer about do we get goosebumps when we. Made with QuickFrame: script, boards, captions, music, voice, render — one prompt.",
+    "tags": [
+      "goosebumps",
+      "reflex",
+      "human-body",
+      "evolution",
+      "why"
+    ],
+    "thumbnail": {
+      "text": "Why Skin Bristles",
+      "art": "check"
+    },
+    "credits": 2.0,
+    "warnings": [
+      "script text authored by the T2 LLM engine (QwenWork model, agent provider) — not the deterministic spine",
+      "target 12s fits ~2 of 5 beats; trimmed the spine to match lengthSec"
+    ],
+    "scenes": [
+      {
+        "i": 0,
+        "beat": "hook",
+        "vo": "Cold air, or a song that hits just right, and your arms break out in tiny bumps.",
+        "caption": "A song hits right and your arms break out in bumps.",
+        "onText": "Bumps From Nowhere",
+        "motion": "walk",
+        "art": "check",
+        "whyArt": "keyword match in vo -> check",
+        "clip": "",
+        "sec": 4.8,
+        "words": 17,
+        "chars": 80,
+        "start": 0.0,
+        "end": 4.8,
+        "cues": [
+          {
+            "text": "Cold air or a",
+            "at": 0.092
+          },
+          {
+            "text": "song that hits just",
+            "at": 1.025
+          },
+          {
+            "text": "right and your arms",
+            "at": 1.851
+          },
+          {
+            "text": "break out in tiny",
+            "at": 2.825
+          },
+          {
+            "text": "bumps",
+            "at": 3.62
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "beat": "land",
+        "vo": "You lost most of the fur. The reflex stayed. So a cold breeze still leaves its mark.",
+        "caption": "You lost the fur. The reflex stayed. The bumps are left over.",
+        "onText": "An Old Reflex",
+        "motion": "nod",
+        "art": "people",
+        "whyArt": "motion 'nod' -> people",
+        "clip": "",
+        "sec": 6.41,
+        "words": 17,
+        "chars": 84,
+        "start": 4.8,
+        "end": 11.208,
+        "cues": [
+          {
+            "text": "You lost most of",
+            "at": 4.892
+          },
+          {
+            "text": "the fur The reflex",
+            "at": 5.655
+          },
+          {
+            "text": "stayed So a cold",
+            "at": 7.427
+          },
+          {
+            "text": "breeze still leaves its",
+            "at": 9.154
+          },
+          {
+            "text": "mark",
+            "at": 10.075
+          }
+        ]
+      }
+    ]
+  },
+  "download": {
+    "key": "edcbd7d86c369aec11ef706c93de6a13-qf-20261119-133535-0dcd82.mp4",
+    "url": "http://127.0.0.1:8791/files/edcbd7d86c369aec11ef706c93de6a13-qf-20261119-133535-0dcd82.mp4?exp=1795152947&sig=39fe5a7f07a3a0d18699e859d1a195e418623bc4a1a6d479f82379da33d365b4",
+    "expiresIn": 86400,
+    "sizeBytes": 374741,
+    "durationSec": 11.2,
+    "manifestUrl": "http://127.0.0.1:8791/files/646d1dc9b1462766387f5fb2836b0506-manifest-20261119-133535-0dcd82.json?exp=1795152947&sig=fe28933569163b331195b17e8cadf1640482b5c3497c7957fd26ec5f73e25c6e"
+  },
+  "blocker": null,
+  "error": null,
+  "createdAt": 1795066535.02
+}

@@ -1,0 +1,9 @@
+# QuickFrame T1 job service — runtime deps (the real qf/ package)
+# The HTTP service is Python stdlib (http.server) — no web framework needed.
+# Encode pipeline deps: Pillow + numpy (frame drawing). FFmpeg is resolved from
+# the system (apt in the Dockerfile) with an imageio-ffmpeg fallback.
+pillow>=11
+numpy>=2
+# Voice stage (T4): Microsoft Edge neural TTS — free, no API key, no quota.
+# Needs outbound network to the MS TTS endpoint at render time.
+edge-tts>=7

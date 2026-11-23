@@ -1,0 +1,23 @@
+# Render Blueprint for the QuickFrame T1 job service (free tier).
+# Deploy: connect this repo in Render and choose "Blueprint" (or create a
+# Web Service from the repo and point it at ./Dockerfile).
+# The service is the Python stdlib T1 job service (qf/) with ffmpeg + edge-tts.
+# NOTE: QF_SCRIPT_ENGINE is intentionally NOT set here. The T2 LLM script
+# engine cannot run in this container (no Node.js / T2 code, and T2 needs the
+# QwenWork model to author each topic's script). In the cloud the service
+# uses the deterministic stub script engine, which works for any topic.
+services:
+  - type: web
+    name: quickframe-t1
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: QF_HOST
+        value: 0.0.0.0
+      - key: QF_RENDER_WORKERS
+        value: "1"
+      - key: QF_RES
+        value: 1280x720
+      - key: PYTHONUNBUFFERED
+        value: "1"

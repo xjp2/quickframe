@@ -1,0 +1,88 @@
+{
+  "job": "20261121-033349-63a377",
+  "state": "done",
+  "elapsed": 25.1,
+  "log": [
+    {
+      "ts": 1795203229.157,
+      "stage": "script",
+      "line": "building beat sheet: engine=deterministic stub template=why topic='why do rivers bend and curve across flat plains'"
+    },
+    {
+      "ts": 1795203229.159,
+      "stage": "script",
+      "line": "done 0.001s \u00b7 engine=deterministic stub \u00b7 2 scenes \u00b7 15.0s \u00b7 2.0 credits"
+    },
+    {
+      "ts": 1795203229.159,
+      "stage": "boards",
+      "line": "image stage: pollinations/flux \u00b7 2 scenes \u00b7 cache=images-20261121-033349-63a377"
+    },
+    {
+      "ts": 1795203242.243,
+      "stage": "boards",
+      "line": "scene 0: generated in 0.52s \u00b7 seed=204409978 \u00b7 58 KB"
+    },
+    {
+      "ts": 1795203242.243,
+      "stage": "boards",
+      "line": "scene 1: generated in 0.56s \u00b7 seed=916651613 \u00b7 33 KB"
+    },
+    {
+      "ts": 1795203242.385,
+      "stage": "boards",
+      "line": "done 0.141s \u00b7 2 stills -> boards-20261121-033349-63a377 \u00b7 2 AI illustrations composited"
+    },
+    {
+      "ts": 1795203242.385,
+      "stage": "art",
+      "line": "done \u00b7 s0:check(keyword) \u00b7 s1:clock(keyword)"
+    },
+    {
+      "ts": 1795203242.385,
+      "stage": "art",
+      "line": "illustrations: 2 distinct AI images (pollinations, model served: flux) \u00b7 shared cool-palette style \u00b7 all readable text typeset by the encoder, never the image model"
+    },
+    {
+      "ts": 1795203244.061,
+      "stage": "voice",
+      "line": "edge-tts render 13.4s \u00b7 2 scenes \u00b7 cues + scene times rebuilt from real word timings"
+    },
+    {
+      "ts": 1795203244.245,
+      "stage": "voice",
+      "line": "bed=drive mixed 0.88 \u00b7 13.44s audio"
+    },
+    {
+      "ts": 1795203244.246,
+      "stage": "captions",
+      "line": "done \u00b7 style=blocks \u00b7 cues=11"
+    },
+    {
+      "ts": 1795203244.27,
+      "stage": "encode",
+      "line": "audit 0 violations at 1280x720 \u00b7 rendering"
+    },
+    {
+      "ts": 1795203250.181,
+      "stage": "encode",
+      "line": "done 5.935s \u00b7 13.43s mp4 \u00b7 0.45 MB"
+    },
+    {
+      "ts": 1795203250.202,
+      "stage": "publish",
+      "line": "done \u00b7 stored 9c0667021ed2566ffd0fd16c141ff591-qf-20261121-033349-63a377.mp4 \u00b7 signed URL ttl=86400s \u00b7 uploaders: none wired"
+    }
+  ],
+  "blocker": null,
+  "error": null,
+  "mp4": {
+    "path": "D:\\opc\\quickframe-real-images\\local-render-20261121-033349-63a377.mp4",
+    "bytes": 454363,
+    "duration": "13.433333",
+    "video": "h264 1280x720",
+    "audio": "aac 48000Hz"
+  },
+  "audio_rms": 0.1318,
+  "tampered_url": 403
+}

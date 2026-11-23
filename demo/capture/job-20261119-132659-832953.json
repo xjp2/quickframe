@@ -1,0 +1,206 @@
+{
+  "id": "20261119-132659-832953",
+  "cfg": {
+    "topic": "why elevator music exists",
+    "template": "why",
+    "lengthSec": 14,
+    "aspect": "16:9",
+    "voice": "calm-01",
+    "captions": "blocks",
+    "music": "drive",
+    "silentVoice": true
+  },
+  "state": "done",
+  "log": [
+    {
+      "ts": 1795066019.176,
+      "stage": "script",
+      "line": "building beat sheet: template=why topic='why elevator music exists'"
+    },
+    {
+      "ts": 1795066019.176,
+      "stage": "script",
+      "line": "done 0.0s · 2 scenes · 13.99s · 2.0 credits"
+    },
+    {
+      "ts": 1795066019.25,
+      "stage": "boards",
+      "line": "done 0.074s · 2 stills -> boards-20261119-132659-832953"
+    },
+    {
+      "ts": 1795066019.25,
+      "stage": "art",
+      "line": "done · s0:clock(keyword) · s1:gear(keyword)"
+    },
+    {
+      "ts": 1795066021.039,
+      "stage": "voice",
+      "line": "edge-tts render 14.9s · 2 scenes · cues + scene times rebuilt from real word timings"
+    },
+    {
+      "ts": 1795066021.297,
+      "stage": "voice",
+      "line": "bed=drive mixed 0.88 · 14.88s audio"
+    },
+    {
+      "ts": 1795066021.297,
+      "stage": "captions",
+      "line": "done · style=blocks · cues=9"
+    },
+    {
+      "ts": 1795066021.33,
+      "stage": "encode",
+      "line": "audit 0 violations at 1920x1080 · rendering"
+    },
+    {
+      "ts": 1795066033.855,
+      "stage": "encode",
+      "line": "done 12.559s · 14.88s mp4 · 0.48 MB"
+    },
+    {
+      "ts": 1795066033.874,
+      "stage": "publish",
+      "line": "done · stored 6cc9e892310a5ab573500234a07fdbd3-qf-20261119-132659-832953.mp4 · signed URL ttl=86400s · uploaders: none wired"
+    }
+  ],
+  "stages": [
+    "script",
+    "boards",
+    "art",
+    "voice",
+    "captions",
+    "encode",
+    "publish"
+  ],
+  "createdAt": 1795066019.028,
+  "public_base": "http://127.0.0.1:8777",
+  "stageState": {
+    "script": "done",
+    "boards": "done",
+    "art": "done",
+    "voice": "done",
+    "captions": "done",
+    "encode": "done",
+    "publish": "done"
+  },
+  "result": {
+    "id": "20261119-132659-832953",
+    "topic": "why elevator music exists",
+    "subject": "elevator music exists",
+    "template": "why",
+    "templateName": "Why it works",
+    "audience": "curious general audience",
+    "tone": "plain, spoken, confident",
+    "voice": {
+      "name": "calm-01",
+      "rate": 0.952,
+      "tts": "edge-tts"
+    },
+    "aspect": "16:9",
+    "music": "drive",
+    "captions": "blocks",
+    "duck": 0.0,
+    "title": "Elevator music exists — explained in 14 seconds",
+    "hook": "You have seen elevator music exists a hundred times. Almost nobody can explain it.",
+    "totalSec": 14.88,
+    "words": 32,
+    "description": "A 15s why it works explainer about elevator music exists. Made with QuickFrame: script, boards, captions, music, voice, render — one prompt.",
+    "tags": [
+      "elevator",
+      "music",
+      "exists",
+      "quickframe",
+      "explainer"
+    ],
+    "thumbnail": {
+      "text": "why elevator music exists?",
+      "art": "clock"
+    },
+    "credits": 2.0,
+    "warnings": [
+      "target 14s fits ~2 of 5 beats; trimmed the spine to match lengthSec"
+    ],
+    "scenes": [
+      {
+        "i": 0,
+        "beat": "hook",
+        "vo": "You have seen elevator music exists a hundred times. Almost nobody can explain it.",
+        "caption": "You have seen elevator music exists a hundred times. Almost nobody can explain it.",
+        "onText": "why elevator music exists?",
+        "motion": "walk",
+        "art": "clock",
+        "whyArt": "keyword match in vo -> clock",
+        "clip": "",
+        "sec": 6.98,
+        "words": 14,
+        "chars": 82,
+        "start": 0.0,
+        "end": 6.984,
+        "cues": [
+          {
+            "text": "You have seen elevator",
+            "at": 0.103
+          },
+          {
+            "text": "music exists a hundred",
+            "at": 1.274
+          },
+          {
+            "text": "times Almost nobody can",
+            "at": 2.616
+          },
+          {
+            "text": "explain it",
+            "at": 5.25
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "beat": "land",
+        "vo": "Next time you meet elevator music exists, you already know how it works. Follow for the next one.",
+        "caption": "Next time you meet elevator music exists, you already know how it works. Follow for the next one.",
+        "onText": "now you know",
+        "motion": "nod",
+        "art": "gear",
+        "whyArt": "keyword match in vo -> gear",
+        "clip": "",
+        "sec": 7.9,
+        "words": 18,
+        "chars": 97,
+        "start": 6.984,
+        "end": 14.88,
+        "cues": [
+          {
+            "text": "Next time you meet",
+            "at": 7.087
+          },
+          {
+            "text": "elevator music exists you",
+            "at": 8.166
+          },
+          {
+            "text": "already know how it",
+            "at": 10.06
+          },
+          {
+            "text": "works Follow for the",
+            "at": 11.047
+          },
+          {
+            "text": "next one",
+            "at": 13.247
+          }
+        ]
+      }
+    ]
+  },
+  "download": {
+    "key": "6cc9e892310a5ab573500234a07fdbd3-qf-20261119-132659-832953.mp4",
+    "url": "http://127.0.0.1:8777/files/6cc9e892310a5ab573500234a07fdbd3-qf-20261119-132659-832953.mp4?exp=1795152433&sig=759c9fbdbe05e733a001ff42a6bc904a2227b4429e86243186cf807a9d8f0377",
+    "expiresIn": 86400,
+    "sizeBytes": 481176,
+    "durationSec": 14.88,
+    "manifestUrl": "http://127.0.0.1:8777/files/8e454087c42bea14e53d536af1ca5d16-manifest-20261119-132659-832953.json?exp=1795152433&sig=50552dfb20b3674cebb34aaef7e235d29e11c405cce22d7dd4ca32afa3302be5"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Why Airplane Mode Still Drains Your Battery Overnight",
+  "hook": "You switch on airplane mode and the battery still drops by morning. The radio was never the whole story.",
+  "description": "An inside-the-system explainer of why a phone on airplane mode still loses charge overnight.",
+  "tags": ["airplane-mode", "battery", "smartphone", "operating-system", "inside"],
+  "thumbnail": { "text": "Airplane Mode Isn't Off" },
+  "scenes": [
+    {
+      "vo": "On the surface, airplane mode looks like the phone sleeps. Dark screen, no signal bars, done.",
+      "caption": "On the surface, airplane mode looks like the phone finally sleeps.",
+      "onText": "Airplane Mode Sleeps?",
+      "motion": "pan",
+      "art": "hero",
+      "whyArt": "clean exterior view of a dark phone in airplane mode"
+    },
+    {
+      "vo": "Lift the lid and the phone is still awake, indexing files and checking for updates.",
+      "caption": "Lift the lid and the phone is still awake inside.",
+      "onText": "Still Awake Inside",
+      "motion": "zoom",
+      "art": "f2",
+      "whyArt": "exploded cutaway showing background tasks running"
+    },
+    {
+      "vo": "The quiet drain is the operating system, not the radio. Apps scheduled to refresh wake the chip.",
+      "caption": "The drain is the operating system, not the radio.",
+      "onText": "The OS, Not Signal",
+      "motion": "build",
+      "art": "s5",
+      "whyArt": "one highlighted component: the scheduler waking the chip"
+    },
+    {
+      "vo": "Every wake costs battery, but it buys a phone that feels instant. That is the price.",
+      "caption": "Every wake costs battery, but buys a phone that feels instant.",
+      "onText": "Ready Costs Battery",
+      "motion": "draw-on",
+      "art": "s6",
+      "whyArt": "two-sided balance: readiness against battery life"
+    },
+    {
+      "vo": "Airplane mode silences the radios, not the whole machine built to stay ready.",
+      "caption": "It silences the radios, not the whole machine.",
+      "onText": "Radios Off, Machine On",
+      "motion": "reveal",
+      "art": "f1",
+      "whyArt": "system-wide view of what airplane mode does and does not touch"
+    }
+  ]
+}

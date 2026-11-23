@@ -1,0 +1,14 @@
+{
+  "name": "quickframe-t2-script",
+  "version": "0.1.0",
+  "private": true,
+  "description": "QuickFrame T2 script engine — turns a topic + cfg into the §3 job JSON. Replaces the deterministic engine.js stub with a real LLM-backed script call. Node built-ins only, no deps, no keys required for the offline/agent path.",
+  "type": "commonjs",
+  "main": "engine.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node bin/cli.js",
+    "verify": "node verify.js",
+    "sample": "node bin/cli.js --provider agent --response out/sample-response.json --topic \"why airplane mode still drains your battery overnight\" --spine inside --seconds 30 --out samples/inside-airplane-mode-battery.job.json"
+  }
+}

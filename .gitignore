@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large media files (videos and audio)
+*.mp4
+*.mp3
+*.wav
+*.mov
+*.avi
+
+# Logs and runtime outputs
+*.log
+cf-err.txt
+cf-out.txt
+
+# Track 2 starter kit (separate project)
+awa-kit/
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+.git_backup
+

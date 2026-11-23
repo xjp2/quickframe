@@ -1,0 +1,89 @@
+{
+  "system": "You write the SCRIPT step of QuickFrame, a stickman/whiteboard explainer-video pipeline (topic -> script -> storyboard -> animation -> captions+music -> render -> publish). Your script becomes the storyboard: one short scene per beat, in the spine's beat order. Write for the EAR, not the eye: short spoken sentences a person reads aloud in one breath. Never invent statistics, prices, or facts. If a claim is assumed, keep it generic. The narration (vo) must be specific to THIS topic — do not echo generic template lines. onText is the words TYPESET onto the frame by the encoder, not painted into an image. Keep it <= 6 words. Return ONLY a single JSON object that matches the schema. No prose, no markdown fences.",
+  "user": "TOPIC: why do we see lightning before we hear thunder\nSPINE: Why it happens — Explain the real cause behind a thing people experience but misunderstand.\nTONE: plain, spoken, confident\nVOICE RATE: 1x   ASPECT: 16:9   TARGET LENGTH: 30s\n\nWrite exactly 5 scenes, one per beat, in this order:\n  1. The question — Open on the exact thing the viewer notices and quietly asks \"why?\". (default shot: hero)\n  2. The guess — State the common, intuitive explanation people reach for. (default shot: f1)\n  3. The real mechanism — Name the actual mechanism in one plain, spoken sentence. (default shot: f2)\n  4. The proof — Give one concrete example or test that shows the mechanism is real. (default shot: f4)\n  5. The takeaway — Land the single idea the viewer should remember. (default shot: s6)\n\nSize each scene's narration to about 16 words so the whole script lands near 30s.\nUse only these frame ids for art: hero, f1, f2, f4, s6 (you may reassign among them, but keep them distinct across scenes).\n\nReturn JSON matching this schema:\n{\"type\":\"object\",\"required\":[\"title\",\"hook\",\"description\",\"tags\",\"thumbnail\",\"scenes\"],\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"Short video title, <= 70 chars.\"},\"hook\":{\"type\":\"string\",\"description\":\"One-line hook, <= 140 chars, that makes a viewer stay.\"},\"description\":{\"type\":\"string\",\"description\":\"1-3 sentence description for the destination.\"},\"tags\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"3-8 lowercase topic tags.\"},\"thumbnail\":{\"type\":\"object\",\"required\":[\"text\"],\"properties\":{\"text\":{\"type\":\"string\",\"description\":\"Thumbnail headline, <= 6 words.\"}}},\"scenes\":{\"type\":\"array\",\"description\":\"Exactly 5 scenes, in beat order.\",\"items\":{\"type\":\"object\",\"required\":[\"vo\",\"caption\",\"onText\",\"motion\",\"art\",\"whyArt\"],\"properties\":{\"vo\":{\"type\":\"string\",\"description\":\"Spoken narration for this beat. Short spoken sentences, no bullets.\"},\"caption\":{\"type\":\"string\",\"description\":\"Subtitle line. Usually mirrors vo, may be lightly trimmed.\"},\"onText\":{\"type\":\"string\",\"description\":\"The headline TYPESET onto the frame. <= 6 words. The encoder draws this; do not describe it as image text.\"},\"motion\":{\"type\":\"string\",\"description\":\"One camera/motion verb: pan, draw-on, zoom, build, reveal, cut.\"},\"art\":{\"type\":\"string\",\"description\":\"Art-direction frame id from the pool: f1,f2,f4,s5,s6,vert,vphone,hero.\"},\"whyArt\":{\"type\":\"string\",\"description\":\"One clause: why this shot fits this beat.\"}}}}}}",
+  "schema": {
+    "type": "object",
+    "required": [
+      "title",
+      "hook",
+      "description",
+      "tags",
+      "thumbnail",
+      "scenes"
+    ],
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Short video title, <= 70 chars."
+      },
+      "hook": {
+        "type": "string",
+        "description": "One-line hook, <= 140 chars, that makes a viewer stay."
+      },
+      "description": {
+        "type": "string",
+        "description": "1-3 sentence description for the destination."
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "3-8 lowercase topic tags."
+      },
+      "thumbnail": {
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Thumbnail headline, <= 6 words."
+          }
+        }
+      },
+      "scenes": {
+        "type": "array",
+        "description": "Exactly 5 scenes, in beat order.",
+        "items": {
+          "type": "object",
+          "required": [
+            "vo",
+            "caption",
+            "onText",
+            "motion",
+            "art",
+            "whyArt"
+          ],
+          "properties": {
+            "vo": {
+              "type": "string",
+              "description": "Spoken narration for this beat. Short spoken sentences, no bullets."
+            },
+            "caption": {
+              "type": "string",
+              "description": "Subtitle line. Usually mirrors vo, may be lightly trimmed."
+            },
+            "onText": {
+              "type": "string",
+              "description": "The headline TYPESET onto the frame. <= 6 words. The encoder draws this; do not describe it as image text."
+            },
+            "motion": {
+              "type": "string",
+              "description": "One camera/motion verb: pan, draw-on, zoom, build, reveal, cut."
+            },
+            "art": {
+              "type": "string",
+              "description": "Art-direction frame id from the pool: f1,f2,f4,s5,s6,vert,vphone,hero."
+            },
+            "whyArt": {
+              "type": "string",
+              "description": "One clause: why this shot fits this beat."
+            }
+          }
+        }
+      }
+    }
+  }
+}

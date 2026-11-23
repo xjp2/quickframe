@@ -1,0 +1,10 @@
+# Runtime / generated artefacts (never committed).
+__pycache__/
+*.pyc
+.render_work/
+store/
+jobs/
+data/
+*.mp4
+*.wav
+*.mp3

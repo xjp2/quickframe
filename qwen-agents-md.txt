@@ -1,0 +1,123 @@
+AGENTS.md — work state + dispatched tasks
+Project: stickman/whiteboard explainer-video generator sold as a monthly subscription (OPC).
+
+Front-end + encode pipeline are proven. There is no backend, no server, no model call anywhere. Everything below is stated from the files, not from memory.
+
+Run it: open index.html / studio.html, or python3 -m http.server 8899. No build, no deps, no keys.
+
+1. DONE — do not rebuild these
+Thing	Where	Proof it works
+Marketing site (full conversion page)	index.html 393 ln + assets/js/landing.js	0 console errors; data-driven from brand.js
+Live hero console (idea → 7-stage trace → storyboard)	landing.js module 3	typing a topic rebuilds the board; deep-links to Studio with ?t=&tpl=
+Product surface: 6 steps, all state live	studio.html, assets/js/studio.js 602 ln	verified by scripted walkthrough, 0 errors
+Live beat-sheet editing → re-times scenes, cues, credits	studio.js retim()	edit a line → 00:00–00:06 → 00:04–00:10, cue count + credit update
+Player: frames, cue-accurate captions, bed, seek, mute, aspect	studio.js module 3	t1 00:02 → t2 00:21 after seek, #mute toggles, layers = 5
+Credits / plan gating / persistence / library	studio.js, localStorage	600 → 597 after a job; rows survive reload
+Packaging + destinations + export formats	studio.js publishUI/publish	title, tags, manifest, format checkboxes reflect selections
+Script engine (stub)	assets/js/engine.js 215 ln	deterministic: same topic ⇒ same script
+Real mp4s	assets/media/	master.mp4 39.7 s / 11.6 MB / 1080p / 953 frames; vertical.mp4 same job 9:16; promo-16x9.mp4 48 s / 1,152 frames; promo-9x16.mp4 36 s
+Encode pipeline (works, run as a CLI)	tools_build/	953-frame master in 34 s on 2 CPU cores, no GPU
+Music beds	assets/audio/	bed-chalk/drive/lofi (local synth, 30 s), bed-ai.mp3 (model-composed), sting.mp3
+Visual identity system	assets/css/notebook.css, extra.css	self-hosted faces, blueprint dark sections, safe-area audited
+Design QA instrumentation	tools_build/driver.py:195 audit()	catches any text bbox leaving the broadcast safe area; currently 0 violations
+Assets on disk: 9 storyboard stills (8 prompts + thumbnail.png), 2 accepted motion clips (vhero.mp4, vvphone.mp4). 4 clips were generated; 2 rejected and deleted (linework morph, drawn text melt).
+
+2. NOT DONE — dispatch-ready tasks
+Each task: goal → where to start → contract → acceptance test.
+
+T1 — Job service: prompt → new mp4 (the only risky one, do first)
+Today tools_build is a CLI reading a hard-coded job file. Wrap it.
+
+Start at these real anchors in tools_build/driver.py: :11 job load (SF_JOB env overridable, else jobs/compounding.json), :42 frame_at(m) = how one output frame is drawn, :153 render(name, segs, audio, gain, fade_out, workers) = frames → mp4, :195 audit(segs, canvas, label) = the safe-area gate.
+Replace the canned job with: POST /jobs {topic, template, lengthSec, aspect, voice, captions, music} → script (T2) → per-scene image call (T3) → ffmpeg → object store → signed URL.
+Contract to preserve: job JSON §3 and the 7 stage keys in brand.js.
+Accept: a topic never seen before returns a downloadable mp4 whose boards differ from the pool on disk.
+T2 — Replace the stub script pass with an LLM call
+engine.js build(cfg) is the seam: keep the return shape (§3) and swap the body for one model call. Spine beat-sheets live in TEMPLATES; 6 spines × 5 beats.
+
+Accept: new topic → scenes[i].vo differs from the template text, warnings[] still populated, credits recomputed from totalSec.
+T3 — Generation instead of a fixed pool (this is the actual product)
+engine.js:6 = FRAMES = [f1,f2,f4,s5,s6,vert,vphone,hero]; engine.js:20 artFor(scene, used) picks a still per scene by keyword match, never repeating. Replace with a per-scene image call that keeps the character constant, and keep artFor as the art-direction layer (which beat needs which shot type).
+
+The 9 stills on disk are the reference set for style; they were generated with one shared style instruction, no reference image / no character sheet → identity across scenes is a property of the minimal style, not an enforced system. Treat "stays on-model" as unproven.
+Accept: same topic twice → visibly different boards; a series of topics (5 jobs) keeps one recognisable character.
+T4 — Voice-over (hard blocker on the $49 tier)
+No TTS exists anywhere in this build. Timing math is real but synthetic: engine.js:139 words / 2.6 / rate; studio.js:174 same in the recut path; studio.js:325 fit() reports drift per scene.
+
+Wire a vendor, return per-word timings, then feed those into the cue array instead of cueSplit().
+Accept: caption in master.mp4 lands within ~120 ms of the spoken word, measured against the audio, not against arithmetic.
+T5 — Persist jobs
+studio.js uses localStorage keys stickframe.job.v1, stickframe.library.v1, stickframe.plan. Replace with API calls; the UI already treats these as the whole state.
+
+T6 — Billing + entitlement server-side
+Prices/tiers/limits are data in brand.js (pricing.tiers: Sketch 19 / Creator 49 / Studio 149, credits ≈ 10 s of finished video, watermark + per-aspect flags). Credits currently decrement client-side only (studio.js module 1). The watermark flag must be enforced by the encoder (as tools_build does: it did ship master.mp4 unwatermarked because the flag was off).
+
+T7 — YouTube + TikTok uploaders
+Not written. studio.js publishUI() builds the manifest; formats already exposed are mp4-169, mp4-916, webm, srt, gif — only the first two exist as encoder output. Needs: app registration, YouTube Data API (resumable upload, thumbnail set, schedule), TikTok Content Posting API (DM scope); both need review lead time, start early.
+
+T8 — Trust surface that is currently UI-only
+studio.js runRender() streams a stage log keyed on brand.js pipeline (script, boards, art, voice, captions, encode, publish). Keep those keys — the log format is the promise. Add: p50/p95 stage timings, retry that re-renders only the changed scene (warnings[] already flags candidates), queue position.
+
+T9 — Guardrails before a paid user
+Moderation on prompt + output, rate/credit abuse, DMG-style AIGC disclosure label (a disclose field in the manifest), retention window for generated assets, refunds policy hook.
+
+3. Contracts (these are real; read them from the files, they will not drift)
+Job object produced by engine.build(cfg), keys the app consumes:
+
+
+id, topic, subject, template, templateName, audience, tone, voice{...}, aspect,
+music, captions, title, hook, totalSec, words, description, tags[],
+thumbnail{text, art}, credits, warnings[],
+scenes[] { i, beat, vo, caption, onText, motion, art, whyArt, clip, sec, words,
+          chars, start, end, cues[{text, at}] }
+cfg in: {topic, template, lengthSec, aspect, voice, tone, captions, music, duck}.
+
+at in cues = seconds; the player in studio.js and the encoder in tools_build/driver.py both consume cues as-is — that is why captions stay in sync between preview and file.
+
+Stage keys (brand.js pipeline, also tools_build and the render log):
+
+script → boards → art → voice → captions → encode → publish.
+
+Caption styles (studio.js:328 STYLES and :455 CAPS): blocks (Fraunces 800, karaoke window), karaoke, clean (mono bar), none. Encoder mirrors blocks only; adding a style means both maps plus vid.py:burn().
+
+Beds (studio.js BEDS): chalk, drive, lofi (synth.py, deterministic, 30 s), ai (bed-ai.mp3, model-composed instrumental — verified unvoiced), none. Mixed at volume=0.85-0.9 with fade.
+
+4. Run / verify
+
+cd tools_build
+python3 verify.py            # env + 6 spine jobs + safe-area audit + a real mp4 render
+python3 verify.py --full     # + re-measures the shipped videos against facts.json
+node dump_fix.js "<topic>" <spine> [seconds] > jobs/my-topic.json
+SF_JOB=jobs/my-topic.json python3 job_master.py master myprefix   # prefix => writes to .render_work, never clobbers shipped files
+SF_JOB=jobs/my-topic.json python3 job_promo.py p16
+python3 synth.py             # regenerate the three beds (deterministic)
+Deps: pip install pillow numpy imageio-ffmpeg. ffmpeg is resolved by env.py (system → imageio-ffmpeg → SF_FFMPEG), fonts by env.find_font() (project → system → substitution warning). Nothing in tools_build may point at /tmp again — that is how this build broke when the sandbox reset.
+
+Measured, in this environment, right now: 6/6 spine jobs valid · safe-area violations 0 at 16:9 and 9:16 · unseen topic → 7.33 s 1920×1080 mp4 with audio · shipped master.mp4 39.7 s / 953 frames / 11.6 MB from 34 s encode on 2 CPU cores.
+
+Browser click-through (verify.py cannot see these — it never opens a page). Expected, as measured today, starting from a fresh studio.html:
+
+type topic → "Draft the beat sheet" shows 5 scenes · 00:3x · 3 credits;
+edit a scene line → its timecode and cues change, warnings re-evaluate;
+"Re-roll the boards" → art labels change, no art repeats;
+voice → pick bed, caption style (preview updates), then "Render this job": 19 log lines, credits 600 → 597 on Creator;
+"Open the artefacts" → player shows 5 layers, ▶ advances #tc, bar click seeks, mute swaps the bed label and #bed.muted;
+publish → title/tags/description prefilled, both Connect buttons enable destination bodies, "Publish" writes a manifest naming the checked formats;
+Library → row flips to scheduled; reload restores plan, credits and library. Run it headless with the page's media preloaded — navigating mid-render is what produced the flaky "crashes" earlier.
+5. Traps already paid for (each one cost a debugging cycle here)
+Sandbox resets delete /tmp and site-packages. This build had no ffmpeg and no fonts after a reset, and tools_build still pointed at /tmp/qwenwork. Fixed: env.py resolves everything relative to the project; fonts are vendored in assets/fonts/ (Fraunces, Caveat) with system fallbacks and an explicit substitution warning. If you move this project, re-run verify.py before trusting any prior claim.
+/tmp is a tmpfs sized ~2 GB. Frame dumps filled it and the browser's renderer crashed with a bare "Page crashed". Frame scratch now lives in .render_work/ on the real volume. Keep it there.
+Encode is CPU-bound and the box has 2 cores. driver.render(..., workers=4) is the signature, but job_master.py/job_promo.py pass workers=2; raising it here adds no throughput. A 953-frame master ≈ 34 s, a 1,152-frame promo ≈ 46 s. Size the real fleet from that.
+Browser JS caching in the preview: cache-busting is ?v=N on every asset URL. Bump it after edits or you will debug a stale file. tools_build has no such problem; the site does.
+Vision QA over-reads downscaled contact sheets and invents clipping. Trust the numeric safe-area audit (driver.audit, wired into verify.py) over an image model's opinion about layout. I chased three "phantom" defects before switching to measurement.
+Text never comes from the image model. Everything readable in a frame is typeset by the encoder. Two of four AIGC motion clips were discarded precisely because drawn text melted and limbs morphed. If a task asks for "generated on-screen titles", that task is wrong.
+Do not delete a frame directory while a worker pool is live. A cleanup step racing frame_at produced FileNotFoundError inside a third of the plan. audit() and render() now create their own dirs (os.makedirs(..., exist_ok=True)) and scratch is per-run.
+MutationObserver recursion: the output panel once observed class changes and re-triggered itself until the tab crashed. Any new "auto-refresh" hook should dispatch explicitly (window.__onStep), not observe DOM churn.
+Referenced-before-created assets. The site shipped 404s for assets/audio/bed.mp3 and assets/img/studio-shot.png long after they were removed or renamed, because the HTML still pointed at them and the browser cached the old JS. Order of operations: generate the asset, then reference it, then bump ?v=. A 404 in a demo is a broken image icon on a marketing page.
+Music model needs a lyrics field even for instrumentals (minimax contract). An explicit [inst]-style workaround produced a genuine instrumental, verified by listening to it. Don't assume "no lyrics" means no vocals.
+Refactors silently detached UI handlers. After rewriting the output stage, #go-publish.onclick was null — the button existed, looked enabled, and did nothing. verify.py cannot catch that (it never opens a browser). Any agent touching studio.js must re-run the click-through flow at the end of §4, not just verify.py.
+6. Decisions still owned by the human (agents must not guess)
+Name / domain / hosting. Codename Stickframe is a placeholder marked as such in the UI; brand.js:6 is the single rename point. hashmeta.ai was raised, then parked by the owner — it is not confirmed as company, domain or engine name, and nothing is published anywhere.
+Which niche ships first. Finance/edu spines are drafted (why, compounding, myth, howto, story, inside); the launch subject decides art prompts and hooks.
+Self-serve vs done-for-you at the very start — affects whether T5–T7 or a human-run queue is next.
+Marketing claims in §8 of HANDOFF.md must be re-approved by the owner once T1–T4 land, since the site already promises unlisted-first publishing, no training on prompts, one free retry and perpetual use of already-rendered videos.

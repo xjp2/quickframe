@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuickFrame — prompt to MP4</title>
+<style>
+  :root { --ink:#16181d; --paper:#f6f4ee; --accent:#2563eb; --muted:#6b7280; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+         background:var(--paper); color:var(--ink); }
+  .wrap { max-width:760px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:var(--muted); margin:0 0 24px; }
+  form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  fieldset { grid-column:1/-1; border:0; padding:0; margin:0; display:grid;
+             grid-template-columns:1fr 1fr; gap:12px; }
+  label { font-size:13px; color:var(--muted); display:block; }
+  input,select { width:100%; padding:8px 10px; border:1px solid #d5d2c8; border-radius:8px;
+                 background:#fff; font-size:15px; color:var(--ink); }
+  input#topic { grid-column:1/-1; }
+  button { grid-column:1/-1; padding:12px; border:0; border-radius:8px; background:var(--accent);
+           color:#fff; font-size:16px; font-weight:600; cursor:pointer; }
+  button:disabled { opacity:.6; cursor:default; }
+  .stages { margin-top:28px; display:flex; flex-wrap:wrap; gap:8px; }
+  .stage { font-size:12px; padding:4px 10px; border-radius:999px; border:1px solid #d5d2c8;
+           background:#fff; color:var(--muted); }
+  .stage.done { border-color:#16a34a; color:#16a34a; }
+  .stage.running { border-color:var(--accent); color:var(--accent); }
+  .stage.failed,.stage.blocked { border-color:#dc2626; color:#dc2626; }
+  .log { margin-top:16px; font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;
+         background:#fff; border:1px solid #e5e2d8; border-radius:8px; padding:12px;
+         white-space:pre-wrap; max-height:260px; overflow:auto; }
+  video { margin-top:16px; width:100%; border-radius:8px; background:#000; }
+  a.dl { display:inline-block; margin-top:12px; color:var(--accent); font-weight:600; }
+  .warn { margin-top:12px; font-size:13px; color:#b45309; }
+  .foot { margin-top:32px; font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>QuickFrame</h1>
+  <p class="sub">One prompt &rarr; a real explainer MP4. Seven stages:
+     script &rarr; boards &rarr; art &rarr; voice &rarr; captions &rarr; encode &rarr; publish.
+     Voice is Microsoft Edge neural TTS; the render is real FFmpeg.</p>
+
+  <form id="f">
+    <input id="topic" maxlength="300" placeholder="Topic — e.g. how compound interest works" required>
+    <fieldset>
+      <div><label>Template</label>
+        <select id="template">
+          <option value="why">Why it works</option>
+          <option value="compounding">Compounding</option>
+          <option value="myth">Myth bust</option>
+          <option value="howto">How-to</option>
+          <option value="story">Origin story</option>
+          <option value="inside">Inside the process</option>
+        </select></div>
+      <div><label>Aspect</label>
+        <select id="aspect"><option>16:9</option><option>9:16</option></select></div>
+      <div><label>Voice</label>
+        <select id="voice">
+          <option value="calm-01">calm-01 (Aria)</option>
+          <option value="bright-01">bright-01 (Aria +8%)</option>
+          <option value="doc-01">doc-01 (Guy)</option>
+        </select></div>
+      <div><label>Music bed</label>
+        <select id="music">
+          <option value="drive">drive</option><option value="chalk">chalk</option>
+          <option value="lofi">lofi</option><option value="none">none</option>
+        </select></div>
+      <div><label>Captions</label>
+        <select id="captions">
+          <option value="blocks">blocks</option><option value="karaoke">karaoke</option>
+          <option value="clean">clean</option><option value="none">none</option>
+        </select></div>
+      <div><label>Length target (s)</label>
+        <input id="lengthSec" type="number" value="12" min="8" max="120"></div>
+    </fieldset>
+    <button id="go" type="submit">Render this job</button>
+  </form>
+
+  <div class="stages" id="stages"></div>
+  <div class="log" id="log" hidden></div>
+  <div id="out"></div>
+  <p class="warn" id="warn"></p>
+
+  <p class="foot">Free-tier notes: the Space sleeps when idle (first render after
+     sleep is slower) and rendered files are ephemeral &mdash; download promptly.
+     <code>POST /jobs</code> is the same contract if you call it from code.</p>
+</div>
+
+<script>
+const STAGES = ["script","boards","art","voice","captions","encode","publish"];
+const $ = (id) => document.getElementById(id);
+const chips = {};
+function initStages(){ $("stages").innerHTML=""; STAGES.forEach(s=>{
+  const c=document.createElement("span"); c.className="stage"; c.textContent=s;
+  $("stages").appendChild(c); chips[s]=c; }); }
+initStages();
+
+$("f").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  $("go").disabled=true; $("out").innerHTML=""; $("warn").textContent=""; $("log").hidden=false;
+  initStages();
+  const cfg={ topic:$("topic").value.trim(), template:$("template").value,
+    aspect:$("aspect").value, voice:$("voice").value, music:$("music").value,
+    captions:$("captions").value, lengthSec:Number($("lengthSec").value) };
+  let res;
+  try {
+    res=await fetch("/jobs",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(cfg)});
+  } catch(err){ $("warn").textContent="Could not reach the service: "+err; $("go").disabled=false; return; }
+  if(!res.ok){ $("warn").textContent="Rejected ("+res.status+"): "+await res.text(); $("go").disabled=false; return; }
+  const job=await res.json();
+  const id=job.id;
+  const timer=setInterval(async ()=>{
+    let j; try { j=await (await fetch("/jobs/"+id)).json(); } catch(e){ return; }
+    (j.log||[]).forEach(l=> $("log").textContent+=("["+l.stage+"] "+l.line+"\n"));
+    $("log").scrollTop=$("log").scrollHeight;
+    (j.stages||STAGES).forEach(s=>{
+      const st=(j.stageState||{})[s]; if(st && chips[s]) chips[s].className="stage "+st; });
+    if(j.state==="done"){ clearInterval(timer); finish(j); }
+    if(j.state==="failed"||j.state==="blocked"){ clearInterval(timer);
+      $("warn").textContent=(j.state==="blocked"?"Blocked: ":"Failed: ")+
+        JSON.stringify(j.blocker||j.error||{}); $("go").disabled=false; }
+  },1500);
+});
+
+function finish(j){
+  $("go").disabled=false;
+  const d=j.download||{}; const r=j.result||{};
+  if(d.url){
+    const v=document.createElement("video"); v.controls=true; v.src=d.url; $("out").appendChild(v);
+    const a=document.createElement("a"); a.className="dl"; a.href=d.url; a.download="";
+    a.textContent="Download MP4 ("+(r.totalSec||"?")+"s, "+Math.round((d.sizeBytes||0)/1e6*100)/100+" MB)";
+    $("out").appendChild(a);
+  }
+  (r.warnings||[]).forEach(w=> $("warn").textContent+=[w]+"\n");
+}
+</script>
+</body>
+</html>

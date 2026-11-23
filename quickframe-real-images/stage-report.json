@@ -1,0 +1,25 @@
+{
+  "topic": "why do rivers bend and curve across flat plains",
+  "scenes": 2,
+  "fetch_total_sec": 84.07,
+  "manifest": [
+    {
+      "i": 0,
+      "path": "D:\\quickframe-t1\\.render_work\\images-imgstage-test-001\\scene-0.jpg",
+      "seed": 204409978,
+      "cached": false,
+      "sec": 6.18,
+      "bytes": 59896,
+      "model": "sana"
+    },
+    {
+      "i": 1,
+      "path": "D:\\quickframe-t1\\.render_work\\images-imgstage-test-001\\scene-1.jpg",
+      "seed": 916651613,
+      "cached": false,
+      "sec": 65.86,
+      "bytes": 33988,
+      "model": "sana"
+    }
+  ]
+}

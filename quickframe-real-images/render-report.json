@@ -1,0 +1,127 @@
+{
+  "topic": "why do autumn leaves change color before falling",
+  "health": {
+    "ok": true,
+    "ffmpeg": "/usr/bin/ffmpeg",
+    "cpu": 8,
+    "voiceVendor": true,
+    "fonts": {
+      "display": {
+        "resolved": "DejaVuSerif-Bold.ttf",
+        "substituted": true
+      },
+      "hand": {
+        "resolved": "DejaVuSerif.ttf",
+        "substituted": true
+      },
+      "mono": {
+        "resolved": "DejaVuSansMono.ttf",
+        "substituted": true
+      },
+      "body": {
+        "resolved": "DejaVuSans.ttf",
+        "substituted": true
+      }
+    },
+    "images": {
+      "mode": "pollinations",
+      "model": "flux"
+    },
+    "storeFreeNote": "local filesystem backend",
+    "stages": [
+      "script",
+      "boards",
+      "art",
+      "voice",
+      "captions",
+      "encode",
+      "publish"
+    ]
+  },
+  "job": "20261120-193612-f67292",
+  "state": "done",
+  "elapsed": 152.0,
+  "log": [
+    {
+      "ts": 1795203372.416,
+      "stage": "script",
+      "line": "building beat sheet: engine=deterministic stub template=why topic='why do autumn leaves change color before falling'"
+    },
+    {
+      "ts": 1795203372.418,
+      "stage": "script",
+      "line": "done 0.002s \u00b7 engine=deterministic stub \u00b7 2 scenes \u00b7 15.0s \u00b7 2.0 credits"
+    },
+    {
+      "ts": 1795203372.418,
+      "stage": "boards",
+      "line": "image stage: pollinations/flux \u00b7 2 scenes \u00b7 cache=images-20261120-193612-f67292"
+    },
+    {
+      "ts": 1795203429.959,
+      "stage": "boards",
+      "line": "scene 0: generated in 7.79s \u00b7 seed=856525288 \u00b7 114 KB"
+    },
+    {
+      "ts": 1795203429.959,
+      "stage": "boards",
+      "line": "scene 1: generated in 37.75s \u00b7 seed=471711510 \u00b7 79 KB"
+    },
+    {
+      "ts": 1795203431.998,
+      "stage": "boards",
+      "line": "done 2.039s \u00b7 2 stills -> boards-20261120-193612-f67292 \u00b7 2 AI illustrations composited"
+    },
+    {
+      "ts": 1795203431.998,
+      "stage": "art",
+      "line": "done \u00b7 s0:check(keyword) \u00b7 s1:clock(keyword)"
+    },
+    {
+      "ts": 1795203431.998,
+      "stage": "art",
+      "line": "illustrations: 2 distinct AI images (pollinations, model served: sana) \u00b7 shared cool-palette style \u00b7 all readable text typeset by the encoder, never the image model"
+    },
+    {
+      "ts": 1795203434.997,
+      "stage": "voice",
+      "line": "edge-tts render 13.9s \u00b7 2 scenes \u00b7 cues + scene times rebuilt from real word timings"
+    },
+    {
+      "ts": 1795203436.205,
+      "stage": "voice",
+      "line": "bed=drive mixed 0.88 \u00b7 13.90s audio"
+    },
+    {
+      "ts": 1795203436.205,
+      "stage": "captions",
+      "line": "done \u00b7 style=blocks \u00b7 cues=10"
+    },
+    {
+      "ts": 1795203436.308,
+      "stage": "encode",
+      "line": "audit 0 violations at 1280x720 \u00b7 rendering"
+    },
+    {
+      "ts": 1795203517.811,
+      "stage": "encode",
+      "line": "done 81.606s \u00b7 13.90s mp4 \u00b7 0.54 MB"
+    },
+    {
+      "ts": 1795203517.873,
+      "stage": "publish",
+      "line": "done \u00b7 stored f5e73b6350bd4fb9731bdbbf0fc8f3d2-qf-20261120-193612-f67292.mp4 \u00b7 signed URL ttl=86400s \u00b7 uploaders: none wired"
+    }
+  ],
+  "blocker": null,
+  "error": null,
+  "mp4": {
+    "path": "D:\\opc\\quickframe-real-images\\render-20261120-193612-f67292.mp4",
+    "bytes": 544050,
+    "duration": "13.900000",
+    "video": "h264 1280x720",
+    "audio": "aac 48000Hz"
+  },
+  "audio_rms": 0.1319,
+  "tampered_url": 403
+}

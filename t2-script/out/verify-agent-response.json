@@ -1,0 +1,56 @@
+{
+  "title": "Why You Can't Tickle Yourself",
+  "hook": "Your own fingers are the one thing that cannot surprise you. Here is why.",
+  "description": "A short why-it-happens explainer about why self-tickling never lands.",
+  "tags": [
+    "tickle",
+    "brain",
+    "prediction",
+    "neuroscience"
+  ],
+  "thumbnail": {
+    "text": "You Cannot Tickle You"
+  },
+  "scenes": [
+    {
+      "vo": "Try it right now. Reach over and tickle your own arm. Almost nothing.",
+      "caption": "Reach over and tickle your own arm. Nothing.",
+      "onText": "Try It Now",
+      "motion": "pan",
+      "art": "hero",
+      "whyArt": "wide shot of a person reaching for their own arm"
+    },
+    {
+      "vo": "The guess is that you are just not sensitive there. You are. Ask a friend.",
+      "caption": "The guess says you are not sensitive there.",
+      "onText": "The Usual Guess",
+      "motion": "draw-on",
+      "art": "f1",
+      "whyArt": "simple two-hand concept sketch"
+    },
+    {
+      "vo": "The real reason is smaller. Your brain predicts the touch before it lands.",
+      "caption": "Your brain predicts the touch before it lands.",
+      "onText": "The Brain Predicts",
+      "motion": "zoom",
+      "art": "f2",
+      "whyArt": "close-in diagram of the prediction signal"
+    },
+    {
+      "vo": "Test it: a robot hand that tickles with a half-second delay works instantly.",
+      "caption": "Add a delay and suddenly it works.",
+      "onText": "Add A Delay",
+      "motion": "build",
+      "art": "f4",
+      "whyArt": "worked-example panel with a delayed robot hand"
+    },
+    {
+      "vo": "So it is not the finger. It is a brain that cannot surprise itself.",
+      "caption": "A brain that cannot surprise itself.",
+      "onText": "No Surprise",
+      "motion": "reveal",
+      "art": "s6",
+      "whyArt": "comparison: self touch vs delayed touch"
+    }
+  ]
+}

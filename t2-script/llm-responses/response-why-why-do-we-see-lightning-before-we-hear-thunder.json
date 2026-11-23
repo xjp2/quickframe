@@ -1,0 +1,49 @@
+{
+  "title": "Why Lightning Arrives Before Thunder",
+  "hook": "The sky flashes, then a beat of silence, then the boom. That gap is a race you can actually measure.",
+  "description": "A short why-it-happens explainer of the delay between lightning and thunder, from the speed of light versus sound to counting seconds for distance.",
+  "tags": ["lightning", "thunder", "speed-of-sound", "storms", "why"],
+  "thumbnail": { "text": "Flash, Then Boom" },
+  "scenes": [
+    {
+      "vo": "A storm flashes across the sky, and the boom shows up a beat later, like the sound got left behind.",
+      "caption": "The flash comes first. The boom arrives a beat late.",
+      "onText": "Flash Then Delay",
+      "motion": "pan",
+      "art": "hero",
+      "whyArt": "wide establishing shot of a lightning strike over a dark horizon"
+    },
+    {
+      "vo": "It feels like thunder is just slow to start, as if the sky takes its own sweet time to rumble.",
+      "caption": "It feels like thunder just takes its time to start.",
+      "onText": "Thunder Seems Late",
+      "motion": "draw-on",
+      "art": "f1",
+      "whyArt": "simple two-object sketch: a quick flash and a lagging sound wave"
+    },
+    {
+      "vo": "Light and sound both leave that strike together. Light nearly instant. Sound crawls through the air.",
+      "caption": "Light and sound leave together. Sound crawls, light races.",
+      "onText": "Sound Crawls",
+      "motion": "zoom",
+      "art": "f2",
+      "whyArt": "close-in diagram of one strike emitting fast light and slow pressure waves"
+    },
+    {
+      "vo": "Count the seconds between flash and bang. Every five of them is about a mile of air the sound crossed.",
+      "caption": "Count the seconds. Every five is roughly a mile away.",
+      "onText": "Five Per Mile",
+      "motion": "build",
+      "art": "f4",
+      "whyArt": "worked-example panel: a stopwatch counting to a distant thunderclap"
+    },
+    {
+      "vo": "So you see lightning first because light outruns sound, not because the thunder started late.",
+      "caption": "You see it first because light outruns sound.",
+      "onText": "Light Outruns Sound",
+      "motion": "reveal",
+      "art": "s6",
+      "whyArt": "comparison: the instant light beam versus the slow rolling sound wave"
+    }
+  ]
+}
